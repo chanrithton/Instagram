@@ -33,49 +33,52 @@ class _RegisterScreenState extends State<RegisterScreen> {
               children: [
                 const Spacer(),
                 // add wiget to select photo
-                Stack(
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      width: 200,
-                      height: 200,
-                      child: Container(
+                GetBuilder<RegisterController>(builder: (context) {
+                  return Stack(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
                         width: 200,
                         height: 200,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: Colors.blue,
-                            border: Border.all(color: Colors.white, width: 3),
-                            image: controller.photoProfile == null
-                                ? const DecorationImage(
-                                    image: NetworkImage(
-                                        'https://i.pinimg.com/564x/f4/c3/54/f4c3549f4aaaecee854cbddf44c0ac77.jpg'),
-                                    fit: BoxFit.cover,
-                                  )
-                                : DecorationImage(
-                                    image: FileImage(controller.photoProfile!),
-                                    fit: BoxFit.cover)),
+                        child: Container(
+                          width: 200,
+                          height: 200,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: Colors.white,
+                              border: Border.all(color: Colors.white, width: 3),
+                              image: controller.photoProfile == null
+                                  ? const DecorationImage(
+                                      image: NetworkImage(
+                                          'https://cdn-icons-png.flaticon.com/512/2815/2815428.png'),
+                                      fit: BoxFit.cover,
+                                    )
+                                  : DecorationImage(
+                                      image:
+                                          FileImage(controller.photoProfile!),
+                                      fit: BoxFit.cover)),
+                        ),
                       ),
-                    ),
-                    Positioned(
-                      right: 5,
-                      bottom: 10,
-                      child: GestureDetector(
-                        onTap: () async {
-                          controller.selectPhotoProfile();
-                          setState(() {});
-                          // debugPrint("select photo");
-                        },
-                        child: const CircleAvatar(
-                          child: Icon(
-                            Icons.camera_alt,
-                            size: 20,
+                      Positioned(
+                        right: 5,
+                        bottom: 10,
+                        child: GestureDetector(
+                          onTap: () async {
+                            controller.selectPhotoProfile();
+                            setState(() {});
+                            // debugPrint("select photo");
+                          },
+                          child: const CircleAvatar(
+                            child: Icon(
+                              Icons.camera_alt,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ),
-                    )
-                  ],
-                ),
+                    ],
+                  );
+                }),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Column(
