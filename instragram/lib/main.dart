@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:instragram/App/screens/instagram.dart';
 import 'package:instragram/App/screens/loginscreen.dart';
 import 'package:get/get.dart';
 

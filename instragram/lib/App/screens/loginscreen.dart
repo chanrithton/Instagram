@@ -19,11 +19,11 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Container(
           // add gradient background
           height: Get.height,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.white, Colors.blueGrey],
-            ),
-          ),
+          // decoration: const BoxDecoration(
+          //   gradient: LinearGradient(
+          //     colors: [Colors.white, Colors.blueGrey],
+          //   ),
+          // ),
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(12.0),
@@ -163,11 +163,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               fontSize: 15, fontFamily: 'Comic Sans MS'),
                         ),
                         TextButton(
-                            onPressed: () {
-                              Get.to(() => const RegisterScreen());
+                            onPressed: () async {
+                              final status =
+                                  await Get.to(() => const RegisterScreen());
+                              if (status == true) {
+                                Get.snackbar("Message", "Register Success");
+                              }
                             },
                             child: const Text(
-                              "Sign Up",
+                              "Register",
                               style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.blue,
