@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class ApiInstragram {
   final dio = Dio();
   // create base UrL
-  String baseUrl = "localhost:8000/api";
+  String baseUrl = "http://localhost:8000/api";
 
   // create Register api
   Future<String> registerUser({
